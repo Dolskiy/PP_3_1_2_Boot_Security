@@ -60,10 +60,11 @@ public class AdminController {
                              @RequestParam(value = "age", required = false) Integer age,
                              @RequestParam(value = "password", required = false) String password,
                              @RequestParam(value = "roles", required = false) List<String> roleNames) {
+        String passwordToUpdate = (password == null || password.isEmpty()) ? null : password;
         userService.update(
                 id,
                 new User(username, lastname, age, email),
-                password,
+                passwordToUpdate,
                 roleNames);
         logger.info("updateUser from AdminController");
         return "redirect:/admin";

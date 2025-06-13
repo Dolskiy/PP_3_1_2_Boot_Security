@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (user.getEmail() != null) {
             u.setEmail(user.getEmail());
         }
-        if (password != null) {
+        if (password != null && !password.isEmpty()) {
             u.setPassword(passwordEncoder.encode(password));
         }
         if (roleNames != null) {
